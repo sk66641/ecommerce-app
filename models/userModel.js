@@ -29,5 +29,5 @@ address:{
 
 
 
-const userModel = mongoose.model('User', userSchema);
+const userModel = mongoose.model('User', userschema);
 export default userModel;
