@@ -29,9 +29,9 @@
 }
 
 .footer{
-    colour:white;
+    color:white;
     padding: 25px;
-    backgroung:black;
+    background: #000;
     background: -webkit-linear-gradient(
         to right,
         grey,
