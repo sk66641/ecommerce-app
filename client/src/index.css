@@ -17,3 +17,41 @@
 .nav-link{
     font-weight: 300 !important;
 }
+
+.active{
+    border-bottom: 2px solid #010407 !important;
+}
+
+.navbar-brand{
+    font-weight:700;
+    font-family: "roboto", sans-serif;
+    letter-spacing: 3px;
+}
+
+.footer{
+    colour:white;
+    padding: 25px;
+    backgroung:black;
+    background: -webkit-linear-gradient(
+        to right,
+        grey,
+        black
+    );
+    background: linear-gradient(
+        to right,
+        grey,
+        black
+    );
+}
+
+
+.footer a{
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.footer a:hover{
+    color: #f8f9fa;
+    border-bottom: 1px solid #f8f9fa;
+}
