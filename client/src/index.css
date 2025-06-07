@@ -3,3 +3,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.navbar{
+    font-family:'poppins', sans-serif;
+    font-size: 17px;
+    line-height: 26px;
+    text-transform: uppercase;
+    box-shadow: 0 6px 8px -6px gray;
+    --webkit-box-shadow: 0 6px 8px -6px gray;
+    border-bottom: 0.3px solid grey !important;
+}
+
+.nav-link{
+    font-weight: 300 !important;
+}
