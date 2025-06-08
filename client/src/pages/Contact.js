@@ -8,13 +8,13 @@ const Contact = () => {
       <div className="row contacts">
         <div className="col-md-6">
           <img 
-            src="/images/contacts.jpg"
+            src="/images/contacT.webp"
             alt="contacts"
             style={{ width: '100%' }}
           />
         </div>
         <div className="col-md-4"> 
-          <h1 className="bg-dark text-white text-center">CONTACT US</h1> 
+          <h1 className="text-black text-center">CONTACT US</h1> 
           <p className="text-justify mt-2">
             Any query and info about product, feel free to call anytime. We are available 24x7.
           </p>

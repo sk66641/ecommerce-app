@@ -81,3 +81,19 @@
     text-decoration: none;
     margin-top: 10px;
 }
+
+.contacts{
+  margin: 0px;
+  padding:10px;
+  justify-content: start;
+}
+
+.col-md-4{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical centering */
+  align-items: center;     /* Horizontal centering */
+  margin: 30px;
+  text-align: center;
+  margin-left: 120px;
+}
