@@ -97,3 +97,11 @@
   text-align: center;
   margin-left: 120px;
 }
+
+.register{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  flex-direction: column;
+}
