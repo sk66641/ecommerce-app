@@ -24,6 +24,7 @@ const Login = () => {
           user: res.data.user, // Set user data in auth context
           token: res.data.token // Set token in auth context
         });
+        localStorage.setItem('auth', JSON.stringify(res.data)); // Store auth data in local storage
         navigate('/'); // Navigate to login page on successful registration
       }else{
         toast.error(res.data.message);
