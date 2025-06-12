@@ -1,40 +1,39 @@
-import { useState,useContext,createContext, useEffect, use} from "react";
+import { useState, useContext, createContext, useEffect } from "react";
+import axios from "axios";
 
 const AuthContext = createContext();
 
-
-
-
 const AuthProvider = ({ children }) => {
-const [auth, setAuth] = useState({
+  const [auth, setAuth] = useState({
     user: null,
     token: "",
-    });
-useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    const storedToken = localStorage.getItem("token");
-
-    if (storedUser && storedToken) {
+  });
+   
+  useEffect(() => {
+    const data = localStorage.getItem("auth"); // ✅ Use the correct key
+    if (data) {
+      try {
+        const parsedData = JSON.parse(data);
         setAuth({
-            user: JSON.parse(storedUser),
-            token: storedToken,
+          user: parsedData.user || null,
+          token: parsedData.token || "",
         });
+        //default axios headers
+        axios.defaults.headers.common["Authorization"] = auth?.token
+
+      } catch (error) {
+        console.error("Error parsing auth data", error);
+      }
     }
-}
-, [auth]);    
-// Save auth state to localStorage whenever it changes
-useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(auth.user));
-    localStorage.setItem("token", auth.token);
-}
-, [auth]);      
+  }, [auth?.token]);
+
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
-        {children}
-    </AuthContext.Provider> 
-);
-}
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-const useAuth = () => useContext(AuthContext)
+const useAuth = () => useContext(AuthContext);
 
 export { AuthProvider, useAuth };
