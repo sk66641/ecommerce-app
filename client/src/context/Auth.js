@@ -10,17 +10,13 @@ const [auth, setAuth] = useState({
     user: null,
     token: "",
     });
-     useEffect(() => {
-    const data = localStorage.getItem("auth");
-    if (data) {
-        const parsedData = JSON.parse(data);
-        setAuth({
-            user: parsedData.user,
-            token: parsedData.token,
-        });
-    }
-}
-, [auth]);
+// useEffect(() => {
+//     const storedAuth = localStorage.getItem("auth");
+//     if (storedAuth) {
+//         setAuth(JSON.parse(storedAuth));
+//     }
+// }, [auth]);
+//there is some error in the above code, it should not depend on auth, it should be empty array
 
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
