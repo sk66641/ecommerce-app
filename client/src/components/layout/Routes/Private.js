@@ -10,18 +10,18 @@ export default function PrivateRoute(){
     const {auth, setAuth} = useAuth()
     useEffect(() => {
         const authcheck = async () => {
-  try {
+        try {
     const res = await axios.get('/api/v1/auth/user-auth', {
       headers: {
         Authorization: auth?.token
       }
     });
-    if (res.data.ok) {
-      setOk(true);
-      setAuth({
-        ...auth,
-        user: res.data.user,
-        token: auth?.token // keep the same token
+        if (res.data.ok) {
+            setOk(true);
+            setAuth({
+            ...auth,
+            user: res.data.user,
+            token: auth?.token // keep the same token
       });
       localStorage.setItem("auth", JSON.stringify({
         ...auth,
@@ -29,14 +29,17 @@ export default function PrivateRoute(){
       }));
     } else {
       setOk(false);
-    }
-  } catch (err) {
+ }
+    } catch (err) {
     setOk(false);
     console.log("Auth check error", err);
   }
 };
-
-        if(!auth?.token) authcheck();
+        if (auth?.token) {
+    authcheck();
+  } else {
+    setOk(false); // If no token, redirect to login via spinner
+  }
     }, [auth ?.token]);
     return ok ? <Outlet/> :<Spinners/>;
 
