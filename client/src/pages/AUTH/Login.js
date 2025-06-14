@@ -65,7 +65,7 @@ const Login = () => {
           required
           className="form-control" 
           id="exampleInputPassword1" 
-          placeholder=" Set Password" />
+          placeholder=" Enter Password" />
         </div>
         
         <button 

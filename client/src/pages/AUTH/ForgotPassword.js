@@ -16,9 +16,10 @@ const ForgotPassword = () => {
     e.preventDefault();
     try{
         const res = await axios.post('/api/v1/auth/forgot-password',{
-          email,
-          newPassword,
-          answer,
+             email: email.trim().toLowerCase(),
+             newPassword: newPassword.trim(),
+             answer: answer.trim(),
+
         });
       if(res && res.data.success){
         toast.success(res.data.message);
