@@ -18,6 +18,7 @@ const ForgotPassword = () => {
         const res = await axios.post('/api/v1/auth/forgot-password',{
           email,
           newPassword,
+          answer,
         });
       if(res && res.data.success){
         toast.success(res.data.message);
@@ -26,7 +27,8 @@ const ForgotPassword = () => {
         toast.error(res.data.message);
       }
     }catch(error){
-      console.log(error);
+      console.log(error.response?.data || error.message);
+
       toast.error("Something went wrong");
     }
   }
@@ -50,12 +52,12 @@ const ForgotPassword = () => {
 
         <div className="mb-3">
           <input 
-          type="email" 
-          value={email}
-          onChange={(e)=>setEmail(e.target.value)}
+          type="text" 
+          value={answer}
+          onChange={(e)=>setAnswer(e.target.value)}
           required
           className="form-control" 
-          id="exampleInputEmail"  
+          id="exampleInputanswer"  
           placeholder=" Enter your favouriteAnswer" />
         </div>
 
