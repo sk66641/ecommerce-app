@@ -12,6 +12,7 @@ const Register = () => {
   const[phone,setPhone]=useState("")
   const[address,setAddress]=useState("")
   const[password,setPassword]=useState("")
+  const[answer,setAnswer]=useState("")
   const navigate = useNavigate(); // Initialize useNavigate hook for navigation
 
 
@@ -19,7 +20,7 @@ const Register = () => {
   const handleSubmit= async(e)=>{
     e.preventDefault();
     try{
-        const res = await axios.post('/api/v1/auth/register',{name,email,phone,address,password});
+        const res = await axios.post('/api/v1/auth/register',{name,email,phone,address,password,answer});
       if(res && res.data.success){
         toast.success(res.data.message);
         navigate('/login'); // Navigate to login page on successful registration
@@ -92,6 +93,17 @@ const Register = () => {
           className="form-control" 
           id="exampleInputPassword1" 
           placeholder=" Set Password" />
+        </div>
+
+        <div className="mb-3">
+          <input 
+          type="answer" 
+          value={answer}
+          onChange={(e)=>setAnswer(e.target.value)}
+          required
+          className="form-control" 
+          id="exampleInputPassword1" 
+          placeholder=" What is your favourite sport " />
         </div>
         
         <button 
