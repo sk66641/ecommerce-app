@@ -97,7 +97,7 @@ const Register = () => {
 
         <div className="mb-3">
           <input 
-          type="answer" 
+          type="text" 
           value={answer}
           onChange={(e)=>setAnswer(e.target.value)}
           required

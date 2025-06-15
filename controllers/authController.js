@@ -74,9 +74,7 @@ import JWT from "jsonwebtoken";
                 })
             }
             //check user
-            const user = await userModel.findOne({email,
-                answer: { $regex: new RegExp(`^${answer}$`, "i")
-            }});
+            const user = await userModel.findOne({email})
             //user not found
             if (!user){
                 return res.status(404).send({
@@ -135,15 +133,24 @@ export const forgotPasswordController = async(req,res) => {
         // Find user by email
         const user = await userModel.findOne({ email, answer });
         if (!user) {
-            return res.status(404).send({ success: false, message: 'Wrong Email Or Answer' });
+           console.log("User not found with email and answer:", email, answer);
+           return res.status(404).send({
+            success: false,
+            message: "Wrong Email Or Answer",
+      });
         }
 
-        const hashed = await hashPassword(newPassword);
-        await userModel.findByIdAndUpdate(user._id, {password: hashed}, {new: true});
-        res.status(200).send({ success: true, message: 'Password reset successfully'});
+        const hashedPassword = await hashPassword(newPassword);
+         user.password = hashedPassword;
+        await user.save();
+
+        res.status(200).send({
+         success: true,
+         message: "Password reset successfully",
+    });
     }
     catch (error) {
-        console.log(error);
+        console.error("Forgot password error:", error);
         res.status(500).send({ 
             success: false, 
             message: 'Something went wrong ', 
