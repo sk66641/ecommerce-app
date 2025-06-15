@@ -23,8 +23,15 @@ address:{
     type:String,
     required:true,
 },
-},
-{timestamps:true}
+answer: {
+    type: String,
+    required: true
+  },
+role:{
+    type:String,   
+    default:0,
+}
+}, { timestamps: true }
 );
 
 

@@ -99,10 +99,9 @@ const Register = () => {
           <input 
           type="text" 
           value={answer}
-          onChange={(e)=>setAnswer(e.target.value)}
+          onChange={(e) => setAnswer(e.target.value)}
           required
-          className="form-control" 
-          id="exampleInputPassword1" 
+          className="form-control"  
           placeholder=" What is your favourite sport " />
         </div>
         
