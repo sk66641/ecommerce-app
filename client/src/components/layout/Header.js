@@ -35,26 +35,50 @@ const Header = () => {
           Category
           </NavLink>
         </li>
-       {
-        !auth.user ?(<>
-         <li className="nav-item">
-          <NavLink to="/Register" className="nav-link" href="#">
-          Register
+      {!auth?.user ? (
+  <>
+    <li className="nav-item">
+      <NavLink to="/register" className="nav-link">
+        Register
+      </NavLink>
+    </li>
+    <li className="nav-item">
+      <NavLink to="/login" className="nav-link">
+        Login
+      </NavLink>
+    </li>
+  </>
+) : (
+  <>
+    <li className="nav-item dropdown">
+      <NavLink
+        className="nav-link dropdown-toggle"
+        href="#"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        {auth?.user?.name}
+      </NavLink>
+      <ul className="dropdown-menu">
+        <li>
+          <NavLink
+            to={`/dashboard/${auth?.user?.name}`}
+            className="dropdown-item"
+          >
+            Dashboard
           </NavLink>
         </li>
-         <li className="nav-item">
-          <NavLink to="/Login" className="nav-link" href="#">
-          Login
+        <li>
+          <NavLink onClick={handleLogout} to="/login" className="dropdown-item">
+            Logout
           </NavLink>
         </li>
-        </>) :(<>
-         <li className="nav-item">
-          <NavLink onClick={handleLogout} to="/Login" className="nav-link" href="#">
-          LogOut
-          </NavLink>
-        </li>
-        </>)
-       }
+      </ul>
+    </li>
+  </>
+)}
+
          <li className="nav-item">
           <NavLink to="/Cart" className="nav-link" href="#">
           Cart(0)
