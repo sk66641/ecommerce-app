@@ -25,10 +25,10 @@ export default function AdminRoute(){
             user: res.data.user,
             token: auth?.token // keep the same token
       });
-      localStorage.setItem("auth", JSON.stringify({
-        ...auth,
-        user: res.data.user
-      }));
+      // localStorage.setItem("auth", JSON.stringify({
+      //   ...auth,
+      //   user: res.data.user
+      // }));
     } else {
       setOk(false);
  }
