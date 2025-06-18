@@ -43,6 +43,6 @@ export default function AdminRoute(){
     setOk(false); // If no token, redirect to login via spinner
   }
     }, [auth ?.token]);
-    return ok ? <Outlet/> :<Spinners/>;
+    return ok ? <Outlet/> :<Spinners path=""/>;
 
 }
